@@ -10,3 +10,9 @@
             </form></h3>
         </div> 
 </template>
+
+<script>
+    export default {
+        name: 'gameMode'
+    }
+</script>

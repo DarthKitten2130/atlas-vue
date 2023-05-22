@@ -7,7 +7,15 @@
 </template>
 
 <script>
+import gameMode from './components/gameMode.vue'
+
 export default{
+
+    name: 'App',
+    components: {
+        gameMode
+    },
+
     data: function(){
         return {
             greeting: 'Hello, Vue!',
