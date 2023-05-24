@@ -4,6 +4,9 @@
         <gameMode></gameMode>
         <p>{{ flaskGreeting }}</p>
     </div>
+    <div>
+        
+    </div>
 </template>
 
 <script>
