@@ -4,18 +4,20 @@
         <gameMode></gameMode>
     </div>
     <div>
-        
+        <infoLocal></infoLocal>
     </div>
 </template>
 
 <script>
 import gameMode from './components/gameMode.vue'
+import infoLocal from './components/infoLocal.vue'
 
 export default{
 
     name: 'App',
     components: {
-        gameMode
+        gameMode,
+        infoLocal,
     },
 
     data: function(){
