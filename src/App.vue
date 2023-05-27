@@ -20,7 +20,7 @@ export default{
         infoLocal,
     },
 
-    data: function(){
+    data(){
         return {
             greeting: 'Hello, Vue!',
         }
