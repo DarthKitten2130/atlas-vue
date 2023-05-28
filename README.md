@@ -1,1 +1,1 @@
-# This is the frontend for my Atlas App@
+# This is the frontend for my Atlas App!
