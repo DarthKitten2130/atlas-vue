@@ -2,31 +2,32 @@
     <div>
         <form>
             <label for="playerNum">How Many Players?</label><br>
-            <input id="playerNum" name = "playerNum" v-model="playerNum"><br>
+            <input id="playerNum" name = "playerNum" v-model="store.playerNum"><br>
             <br>
-            <label for="userName">Username(s) (Seperate multiple usernames with commas)</label><br>
-            <input id="userName" name="playerNum" v-model="userName">
+            <label for="userName">Usernames (Seperate multiple usernames with commas)</label><br>
+            <input id="userName" name="playerNum" v-model="store.userNames">
             <br>
             <br>
             <button v-on:click="playerCount">Play!</button>
         </form>
-        <h3>{{ playerNum }}<br>
-            {{ userName.split(',') }}</h3>
+        <h3>{{ store.playerNum }}<br>
+            {{ store.userNames.split(',') }}</h3>
     </div>
 </template>
 
 <script>
+import {store} from './store.js'
+
     export default{
         name:'infoLocal',
         data(){
             return{
-            playerNum: 0,
-            userName : '',
+            store,
             }
         },
         methods:{
             playerCount() {
-                if (this.playerNum != this.userName.split(',').length) {
+                if (store.playerNum != store.userNames.split(',').length) {
                 alert("Number of Players and Usernames isn't the same!")
                 }
             }

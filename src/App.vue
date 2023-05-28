@@ -11,6 +11,7 @@
 <script>
 import gameMode from './components/gameMode.vue'
 import infoLocal from './components/infoLocal.vue'
+import {store} from './components/store.js'
 
 export default{
 
@@ -23,6 +24,7 @@ export default{
     data(){
         return {
             greeting: 'Hello, Vue!',
+            store
         }
     },
 }
