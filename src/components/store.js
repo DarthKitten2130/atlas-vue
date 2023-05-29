@@ -1,6 +1,7 @@
 import {reactive} from 'vue'
 
 export const store = reactive({
-    playerNum: 0,
-    userNames: ''
+    playerNum: 2,
+    userNames: '',
+    'equal': false
 })

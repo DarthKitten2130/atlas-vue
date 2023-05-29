@@ -11,7 +11,8 @@
             <button v-on:click="playerCount">Play!</button>
         </form>
         <h3>{{ store.playerNum }}<br>
-            {{ store.userNames.split(',') }}</h3>
+            {{ store.userNames.split(',') }}
+        </h3>
     </div>
 </template>
 
@@ -28,7 +29,15 @@ import {store} from './store.js'
         methods:{
             playerCount() {
                 if (store.playerNum != store.userNames.split(',').length) {
-                alert("Number of Players and Usernames isn't the same!")
+                    alert("Number of Players and Usernames isn't the same!")
+                }
+                
+                else if (store.playerNum == 1) {
+                    alert("You can't have just one player!")
+                }
+
+                else {
+                    store.equal = true
                 }
             }
         }
