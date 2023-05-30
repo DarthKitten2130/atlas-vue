@@ -2,13 +2,13 @@
     <div id="app">
         <h1><p>Welcome to the Atlas Game!</p></h1>
         <gameMode></gameMode>
-    </div>
-    <div>
+
         <infoLocal></infoLocal>
     </div>
     <br>
     <div>
-        <atlasLocal v-if = "store.equal"></atlasLocal>
+        <atlasLocal v-if = "equalNames"></atlasLocal>
+        <h3>{{equalNames}}</h3>
     </div>
 </template>
 
@@ -16,7 +16,6 @@
 import gameMode from './components/gameMode.vue'
 import infoLocal from './components/infoLocal.vue'
 import atlasLocal from './components/atlasLocal.vue'
-import {store} from './components/store.js'
 
 export default{
 
@@ -27,12 +26,20 @@ export default{
         atlasLocal
     },
 
+    beforeMount() {
+        
+        localStorage.setItem('playerNum',2),
+        localStorage.setItem('userNames',[]),
+        localStorage.setItem('equalNames',false)
+    },
+
     data(){
         return {
             greeting: 'Hello, Vue!',
-            store
+            playerNum: localStorage.getItem('playerNum'),
+            userNames: localStorage.getItem('userNames'),
+            equalNames: localStorage.getItem('equalNames')
         }
-    },
+    }
 }
-
 </script>
