@@ -17,22 +17,22 @@
     <div id="info">
         <form>
             <label for="playerNum">How Many Players?</label><br>
-            <input id="playerNum" name="playerNum" v-model="tempPlayerNum"><br>
+            <input id="playerNum" name="playerNum" v-model="playerNum"><br>
             <br>
             <label for="userName">Usernames (Seperate multiple usernames with commas)</label><br>
-            <input id="userName" name="playerNum" v-model="tempUserNames">
-            <br>
-            <br>
-            <button v-on:click="playerCount">Play!</button>
+            <input id="userName" name="playerNum" v-model="userNames">
         </form>
-        <h3>{{ tempUserNames.split(',') }} <br>
-            {{ tempPlayerNum }} <br>
+        <h4 style="color:red" v-if="numOne">You can't have just 1 player!</h4>
+        <h4 style="color:red" v-else-if="unequalUserNames">Number of players and number of usernames isn't the same!</h4>
+
+
+        <h3>{{ userNames.split(',') }} <br>
+            {{ playerNum }} <br>
             {{ equalUserNames }}
         </h3>
 
     </div>
-        <h3>{{equalNames}}</h3>
-        <atlasLocal v-if = "equalNames"></atlasLocal>
+        <atlasLocal v-if = "equalUserNames"></atlasLocal>
     <br>
     <div>
         
@@ -49,52 +49,30 @@ export default{
         atlasLocal
     },
 
-    beforeMount() {
-        
-        localStorage.setItem('playerNum',2),
-        localStorage.setItem('userNames',''),
-        localStorage.setItem('equalNames','false'),
-        console.log(localStorage.getItem('equalNames'))
-
-    },
-
     data(){
         return {
             gm: 'local',
-            playerNum: parseInt(localStorage.getItem('playerNum')) || 2,
-            userNames: localStorage.getItem('userNames') || '',
-            equalNames: localStorage.getItem('equalNames') === true,
-            tempPlayerNum: 2,
-            tempUserNames: '',
+            playerNum: 2,
+            userNames: '',
         }
     },
     computed: {
 
         equalUserNames() {
 
-            return this.tempPlayerNum == this.tempUserNames.split(',').length ? true : false
-        }
+            return this.playerNum == this.userNames.split(',').length ? true : false
+        },
 
+        unequalUserNames() {
+            return this.playerNum == this.userNames.split(',').length ? false : true
+        },
+
+        numOne() {
+            return this.playerNum == 1 ? true : false
+        }
     },
     methods: {
-        playerCount() {
-            localStorage.setItem('playerNum', this.tempPlayerNum.toString());
-            localStorage.setItem('userNames', this.tempUserNames);
-
-            if (this.tempPlayerNum == 1) {
-                alert("You can't have just one player!");
-            } 
-            
-            else if (this.equalUserNames == false) {
-                alert("Number of Players and Usernames isn't the same!");
-            } 
-            
-            else {
-                localStorage.setItem('equalNames', this.equalUserNames);
-            }
-
-            console.log(this.equalUserNames)
-        }
+        
     }
 }
 </script>
