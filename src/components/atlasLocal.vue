@@ -1,5 +1,5 @@
 <template>
-    <h1>Sup</h1>
+    <h1>atlasLocal</h1>
 </template>
 
 <script>

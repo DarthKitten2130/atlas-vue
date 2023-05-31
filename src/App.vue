@@ -29,7 +29,7 @@ export default{
     beforeMount() {
         
         localStorage.setItem('playerNum',2),
-        localStorage.setItem('userNames',[]),
+        localStorage.setItem('userNames',''),
         localStorage.setItem('equalNames',false)
     },
 
