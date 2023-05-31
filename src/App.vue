@@ -32,21 +32,27 @@
         </h3>
 
     </div>
-        <atlasLocal v-if = "equalUserNames"></atlasLocal>
-    <br>
-    <div>
-        
+
+    <div id="game" v-if="equalUserNames">
+        <table style="width: 100%">
+        <thead>
+            <tr>
+                <th v-for="name in userNames.split(',')" :key="name">{{ name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
     </div>
 </template>
 
 <script>
-import atlasLocal from './components/atlasLocal.vue'
 
 export default{
 
     name: 'App',
     components: {
-        atlasLocal
     },
 
     data(){
