@@ -17,23 +17,26 @@
     <div id="info">
         <form>
             <label for="playerNum">How Many Players?</label><br>
-            <input id="playerNum" name="playerNum" v-model="playerNum"><br>
+            <input id="playerNum" name="playerNum" v-model="playerNum" :disabled="gameStarted"><br>
             <br>
             <label for="userName">Usernames (Seperate multiple usernames with commas)</label><br>
-            <input id="userName" name="playerNum" v-model="userNames">
+            <input id="userName" name="playerNum" v-model="userNames" :disabled="gameStarted">
         </form>
+        <br>
+        <button v-on:click="this.gameStarted = true" v-show="equalUserNames">Play!</button>
         <h4 style="color:red" v-if="numOne">You can't have just 1 player!</h4>
         <h4 style="color:red" v-else-if="unequalUserNames">Number of players and number of usernames isn't the same!</h4>
 
-
-        <h3>{{ userNames.split(',') }} <br>
-            {{ playerNum }} <br>
-            {{ equalUserNames }}
-        </h3>
-
     </div>
-
+<br>
+<br>
     <div id="game" v-if="equalUserNames">
+        <span style="text-align:center">
+        <form>
+            <input v-model="countryName" autocomplete="off" placeholder="Country">
+        </form>
+        </span>
+        <br>
         <table style="width: 100%">
         <thead>
             <tr>
@@ -63,7 +66,9 @@ export default{
             gm: 'local',
             playerNum: 2,
             userNames: '',
-            userAtlas: {}
+            gameStarted: false,
+            userAtlas: {},
+            countryName: ''
         }
     },
     watch: {
@@ -72,7 +77,7 @@ export default{
             this.userAtlas = {}
             for (let i = 0; i < usernames.length; i++) {
             
-                this.userAtlas[usernames[i]] = 'hi';
+                this.userAtlas[usernames[i]] = [];
             
         }
     },
