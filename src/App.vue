@@ -41,9 +41,12 @@
             </tr>
         </thead>
         <tbody>
+            <tr v-for="user in userAtlas" :key="user">
+                <td v-for="country in user" :key="country">{{ country }}</td>
+            </tr>
         </tbody>
     </table>
-
+    <h2>{{ userAtlas }}</h2>
     </div>
 </template>
 
@@ -60,8 +63,21 @@ export default{
             gm: 'local',
             playerNum: 2,
             userNames: '',
+            userAtlas: {}
         }
     },
+    watch: {
+        userNames: function() {
+            const usernames = this.userNames.split(',')
+            this.userAtlas = {}
+            for (let i = 0; i < usernames.length; i++) {
+            
+                this.userAtlas[usernames[i]] = 'hi';
+            
+        }
+    },
+},
+
     computed: {
 
         equalUserNames() {
@@ -75,10 +91,8 @@ export default{
 
         numOne() {
             return this.playerNum == 1 ? true : false
-        }
+        },
+
     },
-    methods: {
-        
-    }
 }
 </script>
