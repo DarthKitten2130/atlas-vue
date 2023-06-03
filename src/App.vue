@@ -25,16 +25,20 @@
         <br>
         <button v-on:click="this.gameStarted = true" v-show="equalUserNames">Play!</button>
         <h4 style="color:red" v-if="numOne">You can't have just 1 player!</h4>
-        <h4 style="color:red" v-else-if="unequalUserNames">Number of players and number of usernames isn't the same!</h4>
+        <h4 style="color:red" v-else-if="!equalUserNames">Number of players and number of usernames isn't the same!</h4>
 
     </div>
+    <h6>{{  countryText }}</h6>
 <br>
 <br>
-    <div id="game" v-if="equalUserNames">
+    <div id="game" v-if="equalUserNames" >
         <span style="text-align:center">
+        <h1>{{ countryName.slice(-1).toUpperCase() }}</h1>
         <form>
-            <input v-model="countryName" autocomplete="off" placeholder="Country">
+            <input v-model="countryName" autocomplete="off" placeholder="Country" :disabled="!gameStarted"><br><br>
         </form>
+        <br>
+        <button v-on:click="verifyCountry">Enter</button>
         </span>
         <br>
         <table style="width: 100%">
@@ -54,7 +58,7 @@
 </template>
 
 <script>
-
+import countries from './assets/countries.txt'
 export default{
 
     name: 'App',
@@ -68,9 +72,13 @@ export default{
             userNames: '',
             gameStarted: false,
             userAtlas: {},
-            countryName: ''
+            playerTurn: '',
+            countryName: '',
+            countryText: countries.toString().split('\r\n'),
+            countryArray: [],
         }
     },
+
     watch: {
         userNames: function() {
             const usernames = this.userNames.split(',')
@@ -88,10 +96,6 @@ export default{
         equalUserNames() {
 
             return this.playerNum == this.userNames.split(',').length ? true : false
-        },
-
-        unequalUserNames() {
-            return this.playerNum == this.userNames.split(',').length ? false : true
         },
 
         numOne() {

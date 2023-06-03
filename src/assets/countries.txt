@@ -3,7 +3,7 @@ Albania
 Algeria
 Andorra
 Angola
-Antigua & Deps
+Antigua_and_Deps
 Argentina
 Armenia
 Australia
@@ -19,7 +19,7 @@ Belize
 Benin
 Bhutan
 Bolivia
-Bosnia Herzegovina
+Bosnia_Herzegovina
 Botswana
 Brazil
 Brunei
@@ -29,29 +29,29 @@ Burundi
 Cambodia
 Cameroon
 Canada
-Cape Verde
-Central African Rep
+Cape_Verde
+Central_African_Rep
 Chad
 Chile
 China
 Colombia
 Comoros
 Congo
-Costa Rica
+Costa_Rica
 Croatia
 Cuba
 Cyprus
-Czech Republic
+Czech_Republic
 Denmark
-Democratic Republic of Congo
+Democratic_Republic_of_Congo
 Djibouti
 Dominica
-Dominican Republic
-East Timor
+Dominican_Republic
+East_Timor
 Ecuador
 Egypt
-El Salvador
-Equatorial Guinea
+El_Salvador
+Equatorial_Guinea
 Eritrea
 Estonia
 Ethiopia
@@ -80,15 +80,15 @@ Iraq
 Ireland
 Israel
 Italy
-Ivory Coast
+Ivory_Coast
 Jamaica
 Japan
 Jordan
 Kazakhstan
 Kenya
 Kiribati
-Korea North
-Korea South
+Korea_North
+Korea_South
 Kosovo
 Kuwait
 Kyrgyzstan
@@ -108,7 +108,7 @@ Malaysia
 Maldives
 Mali
 Malta
-Marshall Islands
+Marshall_Islands
 Mauritania
 Mauritius
 Mexico
@@ -124,7 +124,7 @@ Namibia
 Nauru
 Nepal
 Netherlands
-New Zealand
+New_Zealand
 Nicaragua
 Niger
 Nigeria
@@ -133,7 +133,7 @@ Oman
 Pakistan
 Palau
 Panama
-Papua New Guinea
+Papua_New_Guinea
 Paraguay
 Peru
 Philippines
@@ -143,26 +143,26 @@ Qatar
 Romania
 Russia
 Rwanda
-St Kitts & Nevis
-St Lucia
-Saint Vincent & the Grenadines
+St_Kitts_&_Nevis
+St_Lucia
+Saint_Vincent_&_the_Grenadines
 Samoa
-San Marino
-Sao Tome & Principe
-Saudi Arabia
+San_Marino
+Sao_Tome_&_Principe
+Saudi_Arabia
 Senegal
 Serbia
 Seychelles
-Sierra Leone
+Sierra_Leone
 Singapore
 Slovakia
 Slovenia
-Solomon Islands
+Solomon_Islands
 Somalia
-South Africa
-South Sudan
+South_Africa
+South_Sudan
 Spain
-Sri Lanka
+Sri_Lanka
 Sudan
 Suriname
 Swaziland
@@ -175,20 +175,20 @@ Tanzania
 Thailand
 Togo
 Tonga
-Trinidad & Tobago
+Trinidad_&_Tobago
 Tunisia
 Turkey
 Turkmenistan
 Tuvalu
 Uganda
 Ukraine
-United Arab Emirates
-United Kingdom
-United States
+United_Arab_Emirates
+United_Kingdom
+United_States
 Uruguay
 Uzbekistan
 Vanuatu
-Vatican City
+Vatican_City
 Venezuela
 Vietnam
 Yemen
