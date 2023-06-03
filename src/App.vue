@@ -28,7 +28,6 @@
         <h4 style="color:red" v-else-if="!equalUserNames">Number of players and number of usernames isn't the same!</h4>
 
     </div>
-    <h6>{{  countryText }}</h6>
 <br>
 <br>
     <div id="game" v-if="equalUserNames" >
@@ -71,6 +70,7 @@ export default{
             playerNum: 2,
             userNames: '',
             gameStarted: false,
+            gameEnded: false,
             userAtlas: {},
             playerTurn: '',
             countryName: '',
@@ -103,5 +103,17 @@ export default{
         },
 
     },
+
+    methods: {
+        gameFunc() {
+            let turn = 0
+            while (this.gameEnded == false) {
+                if (turn - 1 == this.userNames.split(',').length) {
+                    turn = 0
+                }
+                
+            }
+        }
+    }
 }
 </script>
