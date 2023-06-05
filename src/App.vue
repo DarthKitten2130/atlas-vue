@@ -45,6 +45,9 @@
         <h4 v-else-if="charWrong">The country doesn't start with the letter of the last country!</h4>
         <h4 v-else-if="countryNull">The country doesn't exist!</h4>
         </span>
+        <span style="color:darkgreen">
+        <h4 v-if="gameQuit">{{ this.userNames.split(',')[this.turn] }} lost!</h4>
+        </span>
         <table style="width: 100%">
         <thead>
             <tr>
@@ -75,7 +78,6 @@ export default{
             playerNum: 2,
             userNames: '',
             gameStarted: false,
-            gameEnded: false,
             userAtlas: {},
             turn: 0,
             playerTurn: '',
@@ -85,6 +87,7 @@ export default{
             countryText: countries.toString().split('\r\n'),
             countryArray: [],
             buttonFirstTime: true,
+            gameQuit: false,
 
             // Error Messages
             charWrong: false,
@@ -135,9 +138,11 @@ export default{
                 this.turn = 0
             }
 
-            if (this.countryName.toLowerCase() == 'quit'){}
+            if (this.countryName.toLowerCase() == 'quit'){
+                this.gameQuit = true
+            }
             // Played Country Checker - works
-            if (this.countryArray.includes(this.countryName) == true){
+            else if (this.countryArray.includes(this.countryName) == true){
                 this.countryPlayed = true
             }
 
