@@ -41,26 +41,34 @@
         </span>
         <br>
         <span style="color:red">
-        <h4 v-if="countryPlayed">You already played this country!</h4>
+        <h4 v-if="inputNull">Type something dumbass!</h4>
+        <h4 v-else-if="countryPlayed">You already played this country!</h4>
         <h4 v-else-if="charWrong">The country doesn't start with the letter of the last country!</h4>
         <h4 v-else-if="countryNull">The country doesn't exist!</h4>
         </span>
         <span style="color:darkgreen">
         <h4 v-if="gameQuit">{{ this.userNames.split(',')[this.turn] }} lost!</h4>
         </span>
+
+
         <table style="width: 100%">
-        <thead>
-            <tr>
-                <th v-for="name in userNames.split(',')" :key="name">{{ name }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="user in userAtlas" :key="user">
-                <td v-for="country in user" :key="country">{{ country }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>{{ userAtlas }}</h2>
+            <thead>
+                <tr>
+                    <th v-for="name in userNames.split(',')" :key="name">{{ name }}</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td v-for="name in userNames.split(',')" :key="name">
+                    <ul>
+                        <li v-for="country in userAtlas[name]" :key="country">{{ country }}</li>
+                    </ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+
     </div>
 </template>
 
@@ -92,7 +100,8 @@ export default{
             // Error Messages
             charWrong: false,
             countryNull: false,
-            countryPlayed: false
+            countryPlayed: false,
+            inputNull: false,
         }
     },
 
@@ -126,7 +135,8 @@ export default{
     methods: {
         gameFunc() {
 
-            this.countryPlayed = false
+            this.inputNull = false
+            this.countryPlayed = false 
             this.countryNull = false
             this.charWrong = false
 
@@ -146,6 +156,10 @@ export default{
                 this.countryPlayed = true
             }
 
+            // Empty Input Checker - works
+            else if (this.countryName == ''){
+                this.inputNull = true
+            }
 
             // Country Exists Checker - works
             else if (this.countryText.includes(this.countryName.toLowerCase()) == false) {
@@ -153,13 +167,13 @@ export default{
             }
 
 
-            // Letter Checker- doesn't work
+            // Letter Checker- works
             else if (this.charCheck == false && this.buttonFirstTime == false){
                 this.charWrong = true
             }
 
 
-            // Main Function - doesn't work
+            // Main Function - works
             else if (this.countryText.includes(this.countryName.toLowerCase()) == true){
                 console.log('hello')
                 
