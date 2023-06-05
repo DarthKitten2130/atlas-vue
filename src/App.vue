@@ -37,9 +37,14 @@
             <input v-model="countryName" autocomplete="off" placeholder="Country" :disabled="!gameStarted"><br><br>
         </form>
         <br>
-        <button v-on:click="verifyCountry">Enter</button>
+        <button v-on:click="gameFunc()">Enter</button>
         </span>
         <br>
+        <span style="color:red">
+        <h4 v-if="countryPlayed">You already played this country!</h4>
+        <h4 v-else-if="charWrong">The country doesn't start with the letter of the last country!</h4>
+        <h4 v-else-if="countryNull">The country doesn't exist!</h4>
+        </span>
         <table style="width: 100%">
         <thead>
             <tr>
@@ -72,10 +77,19 @@ export default{
             gameStarted: false,
             gameEnded: false,
             userAtlas: {},
+            turn: 0,
             playerTurn: '',
             countryName: '',
+            oldCountry: '',
+            newCountry: '',
             countryText: countries.toString().split('\r\n'),
             countryArray: [],
+            buttonFirstTime: true,
+
+            // Error Messages
+            charWrong: false,
+            countryNull: false,
+            countryPlayed: false
         }
     },
 
@@ -86,10 +100,9 @@ export default{
             for (let i = 0; i < usernames.length; i++) {
             
                 this.userAtlas[usernames[i]] = [];
-            
-        }
+            }
+        },
     },
-},
 
     computed: {
 
@@ -102,16 +115,63 @@ export default{
             return this.playerNum == 1 ? true : false
         },
 
+        charCheck() {
+            return this.oldCountry.slice(-1) === this.newCountry.charAt(0);
+        }
     },
 
     methods: {
         gameFunc() {
-            let turn = 0
-            while (this.gameEnded == false) {
-                if (turn - 1 == this.userNames.split(',').length) {
-                    turn = 0
-                }
+
+            this.countryPlayed = false
+            this.countryNull = false
+            this.charWrong = false
+
+
+            this.newCountry = this.countryName
+
+            // Turn Checker - works
+            if (this.turn == this.userNames.split(',').length) {
+                this.turn = 0
+            }
+
+            if (this.countryName.toLowerCase() == 'quit'){}
+            // Played Country Checker - works
+            if (this.countryArray.includes(this.countryName) == true){
+                this.countryPlayed = true
+            }
+
+
+            // Country Exists Checker - works
+            else if (this.countryText.includes(this.countryName) == false) {
+                this.countryNull = true
+            }
+
+
+            // Letter Checker- doesn't work
+            else if (this.charCheck == false && this.buttonFirstTime == false){
+                this.charWrong = true
+            }
+
+
+            // Main Function - doesn't work
+            else if (this.countryText.includes(this.countryName) == true){
+                console.log('hello')
                 
+                if (this.charCheck == true || this.buttonFirstTime == true) {
+                    
+                    this.buttonFirstTime = false
+
+                    // Object Array Pusher
+                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName);
+                    
+                    this.turn++;
+                    
+                    this.countryArray.push(this.countryName);
+
+                    this.oldCountry = this.countryName
+                    
+                }
             }
         }
     }
