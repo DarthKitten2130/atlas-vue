@@ -131,7 +131,7 @@ export default{
             this.charWrong = false
 
 
-            this.newCountry = this.countryName
+            this.newCountry = this.countryName.toLowerCase()
 
             // Turn Checker - works
             if (this.turn == this.userNames.split(',').length) {
@@ -142,13 +142,13 @@ export default{
                 this.gameQuit = true
             }
             // Played Country Checker - works
-            else if (this.countryArray.includes(this.countryName) == true){
+            else if (this.countryArray.includes(this.countryName.toLowerCase()) == true){
                 this.countryPlayed = true
             }
 
 
             // Country Exists Checker - works
-            else if (this.countryText.includes(this.countryName) == false) {
+            else if (this.countryText.includes(this.countryName.toLowerCase()) == false) {
                 this.countryNull = true
             }
 
@@ -160,7 +160,7 @@ export default{
 
 
             // Main Function - doesn't work
-            else if (this.countryText.includes(this.countryName) == true){
+            else if (this.countryText.includes(this.countryName.toLowerCase()) == true){
                 console.log('hello')
                 
                 if (this.charCheck == true || this.buttonFirstTime == true) {
@@ -168,13 +168,13 @@ export default{
                     this.buttonFirstTime = false
 
                     // Object Array Pusher
-                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName);
+                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName.toLowerCase());
                     
                     this.turn++;
                     
-                    this.countryArray.push(this.countryName);
+                    this.countryArray.push(this.countryName.toLowerCase());
 
-                    this.oldCountry = this.countryName
+                    this.oldCountry = this.countryName.toLowerCase()
                     
                 }
             }
