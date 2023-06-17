@@ -61,7 +61,7 @@
                 <tr>
                     <td v-for="name in userNames.split(',')" :key="name">
                     <ul>
-                        <li v-for="country in userAtlas[name]" :key="country">{{ country }}</li>
+                        <li v-for="country in userAtlas[name]" :key="country">{{ country.replaceAll("_"," ") }}</li>
                     </ul>
                     </td>
                 </tr>
@@ -141,8 +141,6 @@ export default{
             this.charWrong = false
 
 
-            this.newCountry = this.countryName.toLowerCase()
-
             // Turn Checker - works
             if (this.turn == this.userNames.split(',').length) {
                 this.turn = 0
@@ -152,7 +150,7 @@ export default{
                 this.gameQuit = true
             }
             // Played Country Checker - works
-            else if (this.countryArray.includes(this.countryName.toLowerCase()) == true){
+            else if (this.countryArray.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == true){
                 this.countryPlayed = true
             }
 
@@ -162,7 +160,7 @@ export default{
             }
 
             // Country Exists Checker - works
-            else if (this.countryText.includes(this.countryName.toLowerCase()) == false) {
+            else if (this.countryText.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == false) {
                 this.countryNull = true
             }
 
@@ -174,7 +172,7 @@ export default{
 
 
             // Main Function - works
-            else if (this.countryText.includes(this.countryName.toLowerCase()) == true){
+            else if (this.countryText.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == true){
                 console.log('hello')
                 
                 if (this.charCheck == true || this.buttonFirstTime == true) {
@@ -182,13 +180,13 @@ export default{
                     this.buttonFirstTime = false
 
                     // Object Array Pusher
-                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName.toLowerCase());
+                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName.replaceAll(" ","_").toLowerCase());
                     
                     this.turn++;
                     
-                    this.countryArray.push(this.countryName.toLowerCase());
+                    this.countryArray.push(this.countryName.replaceAll(" ","_").toLowerCase());
 
-                    this.oldCountry = this.countryName.toLowerCase()
+                    this.oldCountry = this.countryName.replaceAll(" ","_").toLowerCase()
                     
                 }
             }
