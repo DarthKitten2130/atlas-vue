@@ -1,4 +1,5 @@
 <template>
+    <body>
     <div id="app">
         <h1><p>Welcome to the Atlas Game!</p></h1>
     </div>
@@ -70,6 +71,7 @@
 
 
     </div>
+    </body>
 </template>
 
 <script>
@@ -194,3 +196,13 @@ export default{
     }
 }
 </script>
+
+<style>
+@font-face {
+  font-family: 'Kablammo';
+  src: url('./assets/fonts/Kablammo-Regular-VariableFont_MORF.ttf') format('truetype');
+}
+body {font-family:'Comic Sans MS';
+       background-color: skyblue;}
+h1 {color: white; font-family: 'Kablammo'; text-align: center;}
+</style>
