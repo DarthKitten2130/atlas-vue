@@ -12,7 +12,6 @@
                 <input type="radio" id="online" name="mode" value="online" v-model="gm">
                 <label for="online">Online</label><br>
             </form></h3>
-            <h3>{{ gm }}</h3>
     </div> 
 
     <div id="info">
@@ -34,6 +33,7 @@
     <div id="game" v-if="equalUserNames" >
         <span style="text-align:center">
         <h1>{{ countryName.slice(-1).toUpperCase() }}</h1>
+        <br>
         <form>
             <input v-model="countryName" autocomplete="off" placeholder="Country" :disabled="!gameStarted"><br><br>
         </form>
@@ -51,6 +51,7 @@
         <h4 v-if="gameQuit">{{ this.userNames.split(',')[this.turn] }} lost!</h4>
         </span>
 
+<br>
 
         <table style="width: 100%">
             <thead>
@@ -130,7 +131,7 @@ export default{
         },
 
         charCheck() {
-            return this.oldCountry.slice(-1) === this.newCountry.charAt(0);
+            return this.oldCountry.charAt(-1) === this.newCountry.charAt(0);
         }
     },
 
@@ -202,7 +203,20 @@ export default{
   font-family: 'Kablammo';
   src: url('./assets/fonts/Kablammo-Regular-VariableFont_MORF.ttf') format('truetype');
 }
+
 body {font-family:'Comic Sans MS';
-       background-color: skyblue;}
-h1 {color: white; font-family: 'Kablammo'; text-align: center;}
+       background-color: #76DDD5;}
+h1 {color: white; 
+    font-family: 'Kablammo';}
+
+h2 {color: #D811E7}
+
+div {text-align: center;}
+
+ul {list-style: none;
+    list-style-position:outside;
+    margin-left: -50px}
+
+table,tfoot,tr,td {text-align: center;
+                   table-layout: fixed;}
 </style>
