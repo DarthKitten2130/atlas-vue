@@ -85,9 +85,9 @@ export default{
 
     data(){
         return {
-            gm: 'local',
+            gm: 'online',
             playerNum: 2,
-            userNames: '',
+            userNames: ''.split(','),
             gameStarted: false,
             userAtlas: {},
             turn: 0,
@@ -108,114 +108,4 @@ export default{
         }
     },
 
-    watch: {
-        userNames: function() {
-            const usernames = this.userNames.split(',')
-            this.userAtlas = {}
-            for (let i = 0; i < usernames.length; i++) {
-            
-                this.userAtlas[usernames[i]] = [];
-            }
-        },
-    },
-
-    computed: {
-
-        equalUserNames() {
-
-            return this.playerNum == this.userNames.split(',').length ? true : false
-        },
-
-        numOne() {
-            return this.playerNum == 1 ? true : false
-        },
-
-        charCheck() {
-            return this.oldCountry.charAt(-1) === this.newCountry.charAt(0);
-        }
-    },
-
-    methods: {
-        gameFunc() {
-
-            this.inputNull = false
-            this.countryPlayed = false 
-            this.countryNull = false
-            this.charWrong = false
-
-
-            // Turn Checker - works
-            if (this.turn == this.userNames.split(',').length) {
-                this.turn = 0
-            }
-
-            if (this.countryName.toLowerCase() == 'quit'){
-                this.gameQuit = true
-            }
-            // Played Country Checker - works
-            else if (this.countryArray.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == true){
-                this.countryPlayed = true
-            }
-
-            // Empty Input Checker - works
-            else if (this.countryName == ''){
-                this.inputNull = true
-            }
-
-            // Country Exists Checker - works
-            else if (this.countryText.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == false) {
-                this.countryNull = true
-            }
-
-
-            // Letter Checker- works
-            else if (this.charCheck == false && this.buttonFirstTime == false){
-                this.charWrong = true
-            }
-
-
-            // Main Function - works
-            else if (this.countryText.includes(this.countryName.replaceAll(" ","_").toLowerCase()) == true){
-                
-                if (this.charCheck == true || this.buttonFirstTime == true) {
-                    
-                    this.buttonFirstTime = false
-
-                    // Object Array Pusher
-                    this.userAtlas[this.userNames.split(',')[this.turn]].push(this.countryName.replaceAll(" ","_").toLowerCase());
-                    
-                    this.turn++;
-                    
-                    this.countryArray.push(this.countryName.replaceAll(" ","_").toLowerCase());
-
-                    this.oldCountry = this.countryName.replaceAll(" ","_").toLowerCase()
-                    
-                }
-            }
-        }
-    }
-}
 </script>
-
-<style>
-@font-face {
-  font-family: 'Kablammo';
-  src: url('./assets/fonts/Kablammo-Regular-VariableFont_MORF.ttf') format('truetype');
-}
-
-body {font-family:'Comic Sans MS';
-       background-color: #76DDD5;}
-h1 {color: white; 
-    font-family: 'Kablammo';}
-
-h2 {color: #D811E7}
-
-div {text-align: center;}
-
-ul {list-style: none;
-    list-style-position:outside;
-    margin-left: -50px}
-
-table,tfoot,tr,td {text-align: center;
-                   table-layout: fixed;}
-</style>
