@@ -7,14 +7,15 @@
     <div id = 'gameMode'> 
         <h2>Game Mode</h2>
         <h3><form id = "game_mode" name = "game_mode" method = "post">
-                <input type="radio" id="local" name= "mode" value="local" v-model="gm">
+                <input type="radio" id="local" name= "mode" value="true" v-model="gm">
                 <label for="local">Local</label><br>
-                <input type="radio" id="online" name="mode" value="online" v-model="gm">
+                <input type="radio" id="online" name="mode" value="false" v-model="gm">
                 <label for="online">Online</label><br>
             </form></h3>
     </div> 
-
-    <div id="info">
+    <onlineApp v-if="gm">
+    </onlineApp>
+    <div id="info" v-if="!gm">
         <form>
             <label for="playerNum">How Many Players?</label><br>
             <input id="playerNum" name="playerNum" v-model="playerNum" :disabled="gameStarted"><br>
@@ -77,10 +78,12 @@
 
 <script>
 import countries from './assets/countries.txt'
+import onlineApp from './components/onlineApp.vue'
 export default{
 
     name: 'App',
     components: {
+        onlineApp
     },
 
     data(){
