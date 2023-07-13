@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import axios
 import countries from './assets/countries.txt'
+import axios from 'axios'
 
 export default{
 
