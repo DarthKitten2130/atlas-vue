@@ -12,10 +12,8 @@
                 <input type="radio" id="online" name="mode" value="false" v-model="gm">
                 <label for="online">Online</label><br>
             </form></h3>
-    </div> 
-    <onlineApp v-if="gm">
-    </onlineApp>
-    <div id="info" v-if="!gm">
+    </div>
+    <div id="info" v-if="gm">
         <form>
             <label for="playerNum">How Many Players?</label><br>
             <input id="playerNum" name="playerNum" v-model="playerNum" :disabled="gameStarted"><br>
@@ -78,13 +76,12 @@
 
 <script>
 import countries from './assets/countries.txt'
-import onlineApp from './components/onlineApp.vue'
+
 export default{
 
+
     name: 'App',
-    components: {
-        onlineApp
-    },
+   
 
     data(){
         return {
